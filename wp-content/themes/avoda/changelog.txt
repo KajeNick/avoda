@@ -1,0 +1,13 @@
+v1.0.2 -> Mar 26, 2020
+-----------------------
+- [buxfix] Employer personal cabinet
+
+v1.0.1 -> Mar 25, 2020
+-----------------------
+- [new] Employer personal cabinet
+- [new] Employee personal cabinet
+
+
+v1.0 -> Mar 23, 2020
+-----------------------
+- Initial Release

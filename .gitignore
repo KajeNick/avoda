@@ -21,3 +21,11 @@ node_modules/
 *.log
 *.sql
 *.sqlite
+
+/*.php
+/license.txt
+/wp-content/plugins/akismet/
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+/readme.html
+/wp-content/plugins/n-magnet/
