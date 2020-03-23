@@ -91,7 +91,12 @@ class Avoda_Core {
 	public function includes() {
 
 		if ( defined( 'AVODA_CORE_LIBRARIES_PATH' ) ) {
-			require AVODA_CORE_LIBRARIES_PATH . 'avoda-core-frontend.php';
+			require AVODA_CORE_LIBRARIES_PATH . 'avoda-core-tools.php';
+			require AVODA_CORE_LIBRARIES_PATH . 'avoda-core-supports.php';
+
+			if ( ! is_admin() ) {
+				require AVODA_CORE_LIBRARIES_PATH . 'avoda-core-frontend.php';
+			}
 		}
 
 	}
