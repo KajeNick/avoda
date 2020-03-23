@@ -29,3 +29,5 @@ node_modules/
 /wp-content/themes/index.php
 /readme.html
 /wp-content/plugins/n-magnet/
+/wp-includes/
+/wp-admin/
