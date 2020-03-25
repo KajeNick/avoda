@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Avoda Core
- * Plugin URI: https://anvi.dev
+ * Plugin URI: https://anvi.agency
  * Description: Core plugin for avoda theme. Contains all functionality, methods and other.
  * Version: 1.0.0
  * Author: NSukonny
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Avoda_Core' ) ) {
 
-	include_once dirname( __FILE__ ) . '/libraries/class-avoda-core.php';
+	include_once dirname( __FILE__ ) . '/libraries/avoda-core.php';
 
 }
 

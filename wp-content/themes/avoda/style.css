@@ -1,6 +1,6 @@
 /*
 Theme Name: Avoda
-Theme URI: http://anvi.dev
+Theme URI: https://anvi.agency
 Author: NSukonny
 Author URI: http://nsukonny.ru
 Description: Theme for avodazmanit service from anvi agency
@@ -370,4 +370,8 @@ textarea {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+
+.ad-search__office-field::before {
+  display: none;
 }

@@ -67,11 +67,32 @@ class Avoda_Core_Employer {
 
 	}
 
+	/**
+	 * Check user info
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return mixed|void
+	 */
+	public static function avoda_check_user_add_info() {
+
+		if ( avoda_check_user_role() ) {
+			$curr_user      = wp_get_current_user();
+			$curr_user_id   = $curr_user->ID;
+			$valid_add_info = get_user_meta( $curr_user_id, 'add_info_valid', true );
+
+			return $valid_add_info;
+		} else {
+			return null;
+		}
+
+	}
+
 }
 
-function run_avoda_core_employer() {
+function avoda_core_employer_runner() {
 
 	return new Avoda_Core_Employer();
 }
 
-run_avoda_core_employer();
+avoda_core_employer_runner();

@@ -96,6 +96,8 @@ class Avoda_Core {
 
 			if ( ! is_admin() ) {
 				require AVODA_CORE_LIBRARIES_PATH . 'avoda-core-frontend.php';
+			} else {
+				require AVODA_CORE_LIBRARIES_PATH . 'avoda-core-backend.php';
 			}
 		}
 

@@ -11,38 +11,18 @@
 <footer class="footer bg-hex">
     <div class="container">
         <div class="footer-flex">
-			<?php
-			if ( function_exists( 'dynamic_sidebar' ) ) {
-				dynamic_sidebar( 'footer_4' );
-			}
-
-			?>
-			<?php
-			if ( function_exists( 'dynamic_sidebar' ) ) {
-				dynamic_sidebar( 'footer_3' );
-			}
-
-			?>
-			<?php
-			if ( function_exists( 'dynamic_sidebar' ) ) {
-				dynamic_sidebar( 'footer_2' );
-			}
-
-			?>
-			<?php
-			if ( function_exists( 'dynamic_sidebar' ) ) {
-				dynamic_sidebar( 'footer_1' );
-			}
-
-			?>
+			<?php dynamic_sidebar( 'footer_4' ); ?>
+			<?php dynamic_sidebar( 'footer_3' ); ?>
+			<?php dynamic_sidebar( 'footer_2' ); ?>
+			<?php dynamic_sidebar( 'footer_1' ); ?>
         </div>
     </div>
     <div class="fixed">
         <a href="javascript:void(0);" class="fixed-support fixed-circle">
-            <img src="<?php echo get_template_directory_uri() ?>/img/support.svg" alt="" class="fixed-envelope">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/images/support.svg" alt="" class="fixed-envelope">
         </a>
         <a href="javascript:void(0);" class="fixed-up fixed-circle">
-            <img src="<?php echo get_template_directory_uri() ?>/img/arrow-up.svg" alt="" class="fixed-arrow">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/images/arrow-up.svg" alt="" class="fixed-arrow">
         </a>
     </div>
 
@@ -85,187 +65,6 @@
             </div>
         </form>
     </div>
-
-    <!-- pop up for editing information on account page -->
-	<?php
-	$curr_user    = wp_get_current_user();
-	$curr_user_id = $curr_user->ID;
-
-	$company_name  = get_user_meta( $curr_user_id, 'company_name', true );
-	$company_logo  = get_user_meta( $curr_user_id, 'company_logo', true );
-	$user_email    = get_user_meta( $curr_user_id, 'contact_email', true );
-	$user_phone    = get_user_meta( $curr_user_id, 'contact_phone', true );
-	$user_activity = get_user_meta( $curr_user_id, 'type_of_activity', true );
-	$contact_face  = get_user_meta( $curr_user_id, 'contact_face', true );
-	$contact_site  = get_user_meta( $curr_user_id, 'contact_site', true );
-	$contact_fb    = get_user_meta( $curr_user_id, 'contact_fb', true );
-
-
-	if ( avoda_check_user_add_info() ) {
-
-		?>
-
-
-        <div class="popup-cst email-edit">
-            <form data-prev="<?php echo $user_email; ?>" action="javascript:void(0);" id="email-edit" method="post">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-                    <p class="popup-name">דוא"ל דואר:</p>
-                    <input name="email-edit" type="text" class="popup-input" value="<?php echo $user_email; ?>">
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">לשלוח</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="popup-cst contact-face-edit">
-            <form data-prev="<?php echo $contact_face ?>" action="javascript:void(0);" id="contact-face-edit"
-                  method="post">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-                    <p class="popup-name">איש קשר בבית העסק:</p>
-                    <input name="contact-face-edit" type="text" class="popup-input" value="<?php echo $contact_face ?>">
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">שמור</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="popup-cst activity-edit">
-            <form data-prev="<?php echo $user_activity ?>" action="javascript:void(0);" id="activity-edit"
-                  method="post">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-                    <p class="popup-name">תחום עיסוק:</p>
-                    <select id="type-of-activity-add" class="account-select-add" placeholder="טסקט"
-                            name="type-of-activity">
-						<?php
-						while ( have_rows( 'account_type_activity', 'settings' ) ) {
-							the_row();
-							if ( the_sub_field( 'activity_item' == $user_activity ) ) {
-								?>
-                                <option value="<?php the_sub_field( 'activity_item' ) ?>"
-                                        selected="selected"><?php the_sub_field( 'activity_item' ) ?></option>
-							<?php } else { ?>
-                                <option value="<?php the_sub_field( 'activity_item' ); ?>"><?php the_sub_field( 'activity_item' ); ?></option>
-							<?php }
-						} ?>
-                    </select>
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">שמור</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="popup-cst company-name-edit">
-            <form data-prev="<?php echo $company_name; ?>" method="post" action="javascript:void(0);"
-                  id="company-name-edit">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-                    <p class="popup-name">שם העסק:</p>
-                    <input name="company-name-edit" type="text" class="popup-input"
-                           value="<?php echo $company_name; ?>">
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">שמור</button>
-                </div>
-            </form>
-
-        </div>
-
-        <div class="popup-cst contact-site-edit">
-            <form data-prev="<?php echo $contact_site; ?>" action="javascript:void(0);" method="post"
-                  id="contact-site-edit">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-                    <p class="popup-name">כתובת אתר:</p>
-                    <input name="contact-site-edit" type="text" class="popup-input"
-                           value="<?php echo $contact_site; ?>">
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">שמור</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="popup-cst contact-fb-link">
-            <form data-prev="<?php echo $contact_fb; ?>" action="javascript:void(0);" method="post"
-                  id="contact-fb-link">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-                    <p class="popup-name">קישור לדף הפייסבוק:</p>
-                    <input name="contact-site-edit" type="text" class="popup-input" value="<?php echo $contact_fb; ?>">
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">שמור</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="popup-cst pass-edit">
-			<?php
-			$curr_user    = wp_get_current_user();
-			$curr_user_id = $curr_user->ID;
-			?>
-            <form action="javascript:void(0);" id="pass-edit" method="post" data-user_id="<?php echo $curr_user_id; ?>">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-                    <p class="popup-name">סיסמא:</p>
-                    <input id="old_pass" name="old_pass" type="password" class="popup-input mrg-bt"
-                           placeholder="סיסמא ישנה">
-                    <input id="new_pass" name="new_pass" type="password" class="popup-input mrg-bt"
-                           placeholder="סיסמא חדשה">
-                    <input id="repeat_pass" name="reapeat_pass" type="password" class="popup-input"
-                           placeholder="סיסמא חוזרת">
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">שמור</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="popup-cst user-phone-edit">
-            <form data-prev="<?php echo $user_phone; ?>" action="javacsript:void(0);" method="post"
-                  id="user-phone-edit">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-                    <p class="popup-name">טלפון ליצירת קשר:</p>
-                    <input type="text" id="phone-edit" name="phone-edit" type="text" class="popup-input"
-                           value="<?php echo $user_phone; ?>">
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">שמור</button>
-                </div>
-            </form>
-
-        </div>
-
-
-        <div class="popup-cst company-edit-logo">
-            <form data-prev="<?php echo $company_logo; ?>" action="javascript:void(0);" method="post"
-                  id="company-edit-logo" enctype="multipart/form-data">
-                <div class="popup-container">
-                    <div data-fancybox-close class="popup-close"></div>
-
-                    <div class="account-upload cst-upload-file without-mrg">
-                        <div class="cst-upload-file__preview-cont hide">
-                            <div class="cst-upload-file__preview-item"></div>
-                            <a data-fileurl='' href="javascript:void(0);" class="cst-upload-file__delete-file"
-                               rel="nofollow"></a>
-                        </div>
-
-                        <div class="cst-upload-file-cont">
-                            <input type="file" name="company-logo" class="cst-upload-file__inpt"
-                                   id="cst-upload-file__inpt">
-                            <a href="javascript:void(0);" rel="nofollow" class="btn cst-upload-file__btn full">העלה
-                                קובץ</a>
-                        </div>
-                    </div>
-                    <div class="notification"></div>
-                    <button type="submit" class="btn popup-btn">שמור</button>
-                </div>
-            </form>
-        </div>
-	<?php } else {
-		echo '';
-	} ?>
-
-    <!-- end -->
 
     <!-- pop up fo succes creating post in my account -->
     <div class="popup-cst big success-insert">

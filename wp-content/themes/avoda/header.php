@@ -62,7 +62,7 @@
 
                     <div class="header-left-mob">
                         <a href="javascript:void();" class="header-sing">
-                            <img src="<?php echo get_template_directory_uri() . '/img/user.svg'; ?>" alt="user"
+                            <img src="<?php echo get_template_directory_uri() . '/assets/images/user.svg'; ?>" alt="user"
                                  class="header-sing-icon">
                         </a>
                         <div class="header-burder">
@@ -148,3 +148,18 @@
             </form>
         </div>
     </div>
+
+    <section class="sec-header">
+
+		<?php echo do_shortcode( '[URIS id=708]' ); ?>
+
+        <div class="container">
+
+            <h1>
+				<?php the_field( 'slider_text', 'settings' ); ?>
+            </h1>
+
+        </div>
+
+	    <?php do_action('avoda_core_head_filter'); ?>
+    </section>
